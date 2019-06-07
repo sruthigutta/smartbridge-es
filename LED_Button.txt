@@ -1,0 +1,27 @@
+/*
+ * ledbutton3.c
+ *
+ * Created: 6/7/2019 11:34:03 AM
+ * Author:GUTTA SRUTHI
+ */ 
+#ifndef F_CPU
+#define F_CPU 16000000UL
+#endif
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main(void)
+{
+    DDRD|=(1<<PD0);
+	DDRB&=~(1<<PB0);
+    while (1) 
+    {
+		if((PINB&(1<<PB0))==0)
+		{
+			PORTD|=(1<<PD0);
+			_delay_ms(2000);
+			PORTD&=~(1<<PD0);
+		}
+    }
+}
+
